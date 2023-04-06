@@ -24,4 +24,16 @@ describe('App Component', () => {
 
         expect(getByText('Novo')).toBeInTheDocument()
     });
+    
+    it('teste sobre digitar nome', () => {
+        const { getByTestId, getByText } = render(<App />);
+
+        const input = getByTestId('name');
+        fireEvent.change(input, { target: { value: 'Wilhams' } });
+
+        const addButton = getByText('Novo nome');
+        fireEvent.click(addButton)
+
+        expect(getByText('Wilhams')).toBeInTheDocument()
+    })
 });
